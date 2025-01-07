@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Project</title>
+    <link rel="icon" type="image/x-icon" href="images/favicon.png">
+    <link rel="stylesheet" href="/styles.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body style="background-color: black;">
+    <div class="container my-4">
+        <h1 class="text-center mb-4" style="color: darkorange; margin-top: 100px;">Add New Project</h1>
+        
+        <form action="/add" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="title" style="color: aliceblue;">Title</label>
+                <input type="text" name="title" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="description" style="color: aliceblue;">Description</label>
+                <textarea name="description" class="form-control" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="date" style="color: aliceblue;">Date</label>
+                <input type="date" name="date" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="link" style="color: aliceblue;">Project Link</label>
+                <input type="url" name="link" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="image" style="color: aliceblue;">Image</label>
+                <input type="file" name="image" class="form-control" accept="image/*" required>
+            </div>
+            <div class="form-group">
+                <label for="newImageName" style="color: aliceblue;">New Image Name</label>
+                <input type="text" name="newImageName" class="form-control" placeholder="Enter new image name (without extension)" required>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary">Add Project</button>
+                <a href="/projects" class="btn btn-warning">Cancel</a>
+            </div>
+            
+        </form>
+        
+    </div>
+
+    
+</body>
+</html>

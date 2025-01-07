@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="icon" type="image/x-icon" href="images/favicon.png">
+</head>
+<body style="background-color: black;">
+    
+    <div class="container my-4 custom-container">
+        <h1 class="text-center mb-4 custom-name" style="color: darkorange;">Projects</h1>
+        <div>
+            <a href="/add" class="btn btn-primary mb-4">Add New Project</a>
+            <a href="/" class="btn btn-primary mb-4">Home</a>
+        </div>
+        <div class="row">
+    <% if (projects.length === 0) { %>
+        <p class="text-center text-white">No projects found with valid descriptions.</p>
+    <% } else { %>
+        <% projects.forEach(project => { %>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title"><%= project.title %></h5>
+                        <p class="card-text"><%= project.description %></p>
+                        <a href="/project/<%= project.id %>" class="btn btn-info">View Project</a>
+                        <a href="/project/<%= project.id %>/edit" class="btn btn-warning">Edit</a>
+                        <form action="/project/<%= project.id %>?_method=DELETE" method="POST" style="display: inline;">
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        <% }) %>
+    <% } %>
+</div>
+
+        </div>
+    </div>
+
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Details</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="images/favicon.png">
+</head>
+<body style="background-color: black;">
+    <div class="container my-4 custom-container text-white">
+        <h1 style="color: darkorange;"><%= project.title %></h1>
+        <p><strong>Date:</strong> <%= project.date %></p>
+        <p><strong>Description:</strong> <%= project.description %></p>
+
+        <div style="display: block;">
+            <% if (project.image) { %>
+                <img src="<%= project.image.startsWith('http') ? project.image : '/images/' + project.image %>" class="img-fluid" alt="<%= project.title %>">
+            <% } %> 
+        </div>       
+
+        <% if (project.link) { %>
+            <a href="<%= project.link %>" class="btn btn-primary mt-3" target="_blank">Visit Project</a>
+        <% } %>
+
+        <a href="/projects" class="btn btn-secondary mt-3">Back</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,201 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.header{
+    background-color: rgb(17, 15, 15);
+    height: 654px;
+    overflow: hidden;
+}
+
+.navbar ul li{
+    float: left;
+    margin: 50px 80px 70px 100px;
+    font-size: 20px;
+    list-style: none;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.navbar ul li a{
+    text-decoration: none;
+    color: aliceblue;
+    border-radius: 25px;
+}
+
+.navbar ul li a:hover{
+    color: darkorange;
+    border-bottom: 5px solid darkorange;
+    transition: ease-in;
+    transition-delay: 0.1s;
+    transition-duration: 0.2s;
+}
+
+.left-text{
+    text-align: left;
+    position: absolute;
+    top: 40%;
+    margin-left: 120px;
+    font-size: 50px;
+    color: #fff;
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.img{
+    margin-left: 66%;
+}
+
+.hello-text{
+    color: darkorange;
+}
+
+.jjba{
+    border-bottom: 4px solid darkorange;
+    padding-bottom: 20px;
+}
+
+.name{
+    animation-name: name_animation;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+@keyframes name_animation{
+    from{color: red;}
+    to{color: darkorange;}
+}
+
+section{
+    padding: 3rem 0;
+}
+section.projects{
+    height: 600px;
+    background-color: #fff;
+}
+.heading{
+    text-align: center;
+    font-size: 50px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    animation-name: heading-animation;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+}
+@keyframes heading-animation{
+    25%{}
+    50%{color: red}
+    75%{color: darkorange;}
+}
+
+.project-image{
+    margin: 20px 0;
+}
+.projects img{
+    width: 28%;
+    height: 250px;
+    margin-top: 3%;
+    box-shadow: 10px 10px 8px 10px #727272;
+    border: 8px solid rgb(231, 213, 213);
+    margin-left: 50px;
+}
+.projects img:hover{
+    transform: scale(1.09);
+    animation-name: border-animation;
+    animation-duration: 0.9s;
+    animation-iteration-count: infinite;
+}
+@keyframes border-animation{
+    25%{border-bottom: 8px solid darkorange;}
+    50%{border-right: 8px solid darkorange;}
+    75%{border-top: 8px solid darkorange;}
+    100%{border-left: 8px solid darkorange;}
+}
+
+section.about-me{
+    height: 600px;
+    background-color: rgb(17, 15, 15);
+}
+.left-image{
+    height: 0;
+}
+.left-image img{
+    width: 10%;
+    height: 500px;
+    margin-top: 4%;
+    margin-left: 130px;
+}
+.right-text{
+    margin-left: 25%;
+    text-align: center;
+    margin-top: 10%;
+    line-height: 49px;
+    font-size: 25px;
+}
+.myname{
+    font-size: 50px;
+    color: darkorange;
+}
+.right-text button{
+    font-size: 25px;
+    font-family: cursive;
+    margin: 20px 0;
+    background-color: darkorange;
+    border: none;
+}
+.right-text button:a{
+    color: rgb(81, 83, 84);
+    text-decoration: none;
+}
+.right-text button:hover{
+    background-color: rgb(81, 83, 84);
+    color: darkorange;
+    transition: all 0.3s ease-in;
+}
+.icons{
+    transform: translateY(-50%);
+    left: 5px;
+    float: right;
+    width: 50px;
+    margin-top: 20%;
+    margin-right: 150px;
+    z-index: 1;
+}
+.icons img{
+    margin-bottom: 20px;
+}
+.icons img:hover{
+    transform: rotate(20deg);
+    transition: ease-in;
+    transition-duration: 0.2s;
+}
+
+/* body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: cornsilk;
+}
+
+.projects {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.project {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 10px;
+    width: 80%;
+    max-width: 400px;
+    text-align: left;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    margin: auto;
+} */
+
+
+

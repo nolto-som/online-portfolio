@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit</title>
+    <link rel="icon" type="image/x-icon" href="images/favicon.png">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="images/favicon.png">
+</head>
+<body style="background-color: black;">
+    <div class="container">
+        <h1 class="text-center mb-4" style="color: darkorange; margin-top: 100px;">Edit Project</h1>
+        <form action="/project/<%= project.id %>/edit" method="POST">
+            <div class="form-group">
+                <label for="title" style="color: aliceblue;">Title</label>
+                <input type="text" class="form-control" id="title" name="title" value="<%= project.title %>">
+            </div>
+            <div class="form-group">
+                <label for="description" style="color: aliceblue;">Description</label>
+                <textarea class="form-control" id="description" name="description"><%= project.description %></textarea>
+            </div>
+            <div class="form-group">
+                <label for="link" style="color: aliceblue;">Link</label>
+                <input type="text" class="form-control" id="link" name="link" value="<%= project.link %>">
+            </div>
+            <div class="form-group">
+                <label for="image" style="color: aliceblue;">Image URL</label>
+                <input type="text" class="form-control" id="image" name="image" value="<%= project.image %>">
+            </div>
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+            <a href="/projects" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+</body>
+</html>
