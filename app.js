@@ -46,7 +46,7 @@ const upload = multer({ storage: storage });
 //connecting to database
 const db = mysql.createConnection({
     host: process.env.DB_HOST,
-    user: process.env.DB_USER,
+    user: process.env.DB_USERNAME,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
     connectTimeout: 60000 // 60 seconds
