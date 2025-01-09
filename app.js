@@ -45,10 +45,10 @@ const upload = multer({ storage: storage });
 
 //connecting to database
 const db = mysql.createConnection({
-    host: 'bza8nvcbgxoq23lv5qgv-mysql.services.clever-cloud.com',
-    user: 'ujdv1dj5urfo9z6z',
-    password: 'u2JFNQexiiJ0K2WLZwSM',
-    database: 'bza8nvcbgxoq23lv5qgv',
+    host: process.env.host,
+    user: process.env.user,
+    password: process.env.password,
+    database: process.env.database,
 })
 db.connect((error) =>{
     if(error){
