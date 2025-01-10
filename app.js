@@ -49,17 +49,20 @@ const db = mysql.createConnection({
     user: process.env.user,
     password: process.env.password,
     database: process.env.database,
-    port: process.env.port,
+    waitForConnections: true,
+    connectionLimit: 10, // Number of connections in the pool
+    queueLimit: 0,       // Unlimited queued requests
 })
-db.connect((error) =>{
-    if(error){
-        console.log('Database is not Connected:', error.message)
-        return
+
+// Use pool.query to perform database operations
+pool.getConnection((err, connection) => {
+    if (err) {
+        console.error('Error connecting to the database:', err.message);
+        return;
     }
-
-    console.log('Database is Connected...')
-})
-
+    console.log('Connected to the database.');
+    connection.release(); // Release the connection back to the pool
+});
 
 // Routes
 // Home Route
@@ -70,7 +73,7 @@ app.get('/', (req, res) => {
 // Projects Route
 app.get('/projects', (req, res) => {
     const sql = "SELECT * FROM projects WHERE description NOT LIKE '%Lorem ipsum%'";
-    db.query(sql, (err, results) => {
+    pool.query(sql, (err, results) => {
         if (err) throw err;
         res.render('projects', { projects: results });
     });
