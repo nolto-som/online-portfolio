@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 
 const app = express();
 app.set('view engine', 'ejs');
-app.use(bodyParser.urlencoded({ extended: true }));
+
 app.use(express.static('public'));
 
 const port = 1234
@@ -18,6 +18,7 @@ app.listen(port, () =>{
 const multer = require('multer');
 const path = require('path');
 
+app.use(bodyParser.urlencoded({ extended: true }));
 // Configure multer for file uploads
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -49,20 +50,16 @@ const db = mysql.createConnection({
     user: process.env.user,
     password: process.env.password,
     database: process.env.database,
-    waitForConnections: true,
-    connectionLimit: 10, // Number of connections in the pool
-    queueLimit: 0,       // Unlimited queued requests
+})
+db.connect((error) =>{
+    if(error){
+        console.log('Database is not Connected:', error.message)
+        return
+    }
+
+    console.log('Database is Connected...')
 })
 
-// Use pool.query to perform database operations
-pool.getConnection((err, connection) => {
-    if (err) {
-        console.error('Error connecting to the database:', err.message);
-        return;
-    }
-    console.log('Connected to the database.');
-    connection.release(); // Release the connection back to the pool
-});
 
 // Routes
 // Home Route
@@ -73,7 +70,7 @@ app.get('/', (req, res) => {
 // Projects Route
 app.get('/projects', (req, res) => {
     const sql = "SELECT * FROM projects WHERE description NOT LIKE '%Lorem ipsum%'";
-    pool.query(sql, (err, results) => {
+    db.query(sql, (err, results) => {
         if (err) throw err;
         res.render('projects', { projects: results });
     });
