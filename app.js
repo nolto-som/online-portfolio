@@ -45,20 +45,36 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 //connecting to database
+let db;
+
+function connectToDatabase() {
 const db = mysql.createConnection({
     host: process.env.host,
     user: process.env.user,
     password: process.env.password,
     database: process.env.database,
 })
-db.connect((error) =>{
-    if(error){
-        console.log('Database is not Connected:', error.message)
-        return
+db.connect((err) =>{
+    if(err){
+        console.log('Database is not Connected:', err.message);
+        setTimeout(connectToDatabase, 5000); // Retry after 5 seconds
+    }else {
+        console.log('Database is Connected...')
     }
-
-    console.log('Database is Connected...')
 })
+
+db.on('error', (err) => {
+    if (err.code === 'PROTOCOL_CONNECTION_LOST') {
+        console.error('Connection lost, reconnecting...');
+        connectToDatabase();
+    } else {
+        console.error('Database error:', err.message);
+        throw err; // Unrecoverable error
+    }
+});
+}
+
+connectToDatabase();
 
 
 // Routes
